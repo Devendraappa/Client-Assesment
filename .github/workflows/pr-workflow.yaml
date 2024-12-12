@@ -1,38 +1,20 @@
-name: Pull Request Quality Checks
+name: Pull Request Testing Workflow
 
-# Trigger workflow on pull requests targeting specific branches
 on:
   pull_request:
     branches:
-      - main       # Trigger when PR targets the main branch
-      - dev        # Trigger when PR targets the dev branch
+      - main
+      - dev
 
 jobs:
-  build-and-test:
-    # Use an Ubuntu-based environment
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the pull request code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up a programming environment (Java in this example)
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      - name: Install dependencies
+        run: npm install
 
-
-      # Step 3: Run a build (example: Maven build)
-      - name: Build the application
-        run: echo "Building the application... (simulated build)"
-
-      # Step 4: Run unit tests (example: Maven test)
       - name: Run tests
-        run: echo "Running tests... (simulated tests)"
-
-      # Step 5: Perform code quality checks (optional example step)
-      - name: Code Quality Checks
-        run: echo "Running code quality checks... (simulated checks)"
+        run: npm test
