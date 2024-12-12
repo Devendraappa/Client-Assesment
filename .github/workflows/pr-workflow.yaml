@@ -1,4 +1,4 @@
-name: Pull Request Quality Checks
+name: Pull Request before merge
 
 # Trigger workflow on pull requests targeting specific branches
 on:
@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'
 
       # Step 3: Run a build (example: Maven build)
       - name: Build the application
