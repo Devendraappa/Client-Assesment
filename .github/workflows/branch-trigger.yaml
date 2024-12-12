@@ -1,0 +1,19 @@
+name: Branch Trigger Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feature/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run build script
+        run: echo "Building branch ${{ github.ref_name }}"
