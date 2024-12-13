@@ -1,0 +1,15 @@
+name: Deploy Workflow
+
+on:
+  workflow_run:
+    workflows:
+      - Build Workflow
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Application
+        run: echo "Deploying application after build workflow completion..."
