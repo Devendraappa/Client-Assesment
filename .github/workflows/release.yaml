@@ -5,7 +5,7 @@ on:
     # Trigger the action when pushing a tag.
     tags:
       - 'v*'  # This means the action is triggered for tags like v1.0, v2.0, etc.
-  workflow_dispatch:  # Allows manual trigger from GitHub UI
+  #workflow_dispatch:  # Allows manual trigger from GitHub UI
   
 jobs:
   release:
