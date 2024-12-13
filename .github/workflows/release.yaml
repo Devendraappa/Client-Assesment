@@ -3,7 +3,7 @@ name: Release Workflow
 on:
   push:
     tags:
-      - "v*.*" # Trigger on tags like v1.0.0, v2.1.2, etc.
+      - "v*.*" # Trigger on tags like v1.0.0, v2.1.2
 
 jobs:
   create-release:
