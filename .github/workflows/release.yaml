@@ -18,7 +18,13 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v3
 
-    # Step 2: Get the pushed tag
+    # Step 3: Set up Git for creating a new tag (before extracting tag name)
+    - name: Set up Git for release
+      run: |
+        git config user.name "devendraappa"
+        git config user.email "devendraappa.kune@gmail.com"
+
+    # Step 2: Get the pushed tag (extract the tag name)
     - name: Get the pushed tag
       id: get_tag
       run: |
@@ -26,12 +32,6 @@ jobs:
         TAG_NAME=${GITHUB_REF#refs/tags/}  # Remove 'refs/tags/' to get the tag name
         echo "Tag that was pushed: $TAG_NAME"
         echo "::set-output name=tag_name::$TAG_NAME"  # Set the tag name as output for use in the next step
-
-    # Step 3: Set up Git for creating a new tag
-    - name: Set up Git for release
-      run: |
-        git config user.name "devendraappa"
-        git config user.email "devendraappa.kune@gmail.com"
 
     # Step 4: Create a new tag using the pushed tag name + current date
     - name: Create a new tag with pushed tag + date
